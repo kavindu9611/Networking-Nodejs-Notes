@@ -1,0 +1,185 @@
+
+So right now we have a small network of computers connected together.
+Now you might be wondering what will happen if we want to have multiple networks of these.
+So it's just a couple of computers right now.
+What if we want to have millions of computers?
+What if we want to have another network that is maybe located in another city, and now we want to make
+this network talk to that other network.
+So this network might be right here, and then we might have another network right here.
+Now this network could be in another building or in another city or actually in another country.
+The point is that this is a separate network from this one.
+And we also want to have another network here, maybe and maybe millions of other networks and other
+computers.
+So how can we now make all these computers to talk together?
+We can imagine that it will be really unpractical to try to use switches and connect millions of cables
+together.
+It's really, really messy.
+And it's actually not possible to do it because it will get super complicated.
+You can't have just one switch or maybe multiple switches, but connect all these computers to those.
+It's just not possible.
+So what we do is that we add a layer on top of the switches, and we use routers to do this.
+So now we first just have a cable which only could transfer a zero or a one.
+Now then we had switches and now we have routers on top of the switches.
+So when we install the routers on top of the switches this is going to be pretty interesting.
+So now we could connect these routers together also using some cables just like before.
+And now what happens is that a computer right here could talk to a computer right here.
+So the way that routers work is instead of Mac addresses they now work with IP addresses.
+Well they're running on top of the switch.
+So they still understand Mac addresses.
+But now they mainly work with IP addresses.
+So a router has an IP address for example.
+In this case it might be 1220 301.
+Now, don't worry too much right now about the format of an IP address.
+We're going to talk about it in great detail.
+Now, basically, an IP address is a unique address assigned to a specific device.
+And it's unique, just like, you know, Mac addresses.
+So each computer right now and each router will have a unique IP address associated with it.
+So just like what you see now this router, its job is to assign IP addresses to all the computers that
+are connected to it.
+So we'll automatically assign IP addresses to all these computers connected to it.
+And it will also route data.
+So it could route data from this network to the other network.
+So that's basically what routers do.
+So with these IP addresses in place right now.
+Now think of an IP address like your address your home address.
+So you might want to send a package from your home to another person.
+Maybe they could be in the same city as you are or they could be in another country.
+The thing is that you have a unique address assigned to yourself, to your home, and that's unique.
+So the way it works is that you might first say your city, for example, Toronto, and then your street
+address and then your postal code.
+So you might say Toronto and then maybe 200 something Adeline Street and then a postal code or your
+unit number.
+But that address, whatever you put down is specifically unique only to your home.
+There is no other home in the world that has the exact same address as yours do, because you also specify
+the country and also the city and then street number and everything else.
+The same is true with IP addresses.
+Each computer, each device has a unique IP address assigned to it.
+Now, in this case, the first two portions of an IP address will act kind of like the city.
+So for example, these two computers are in the same network.
+Therefore their first portions as you can see here, 32.10 are identical.
+And then only the last two digits or the last two portions are now different.
+Same as here.
+
+This router, this network, its main portion, its network portion is 189.120.
+And then the last two portions are for the network.
+So it will add more to these numbers for other computers that connect to this router.
+So an IP address we're going to talk again more about the format.
+But again think of it like that.
+For example I'm in Toronto I will say Toronto.
+And then my street number and then my unit number.
+Someone who is in New York will do the same thing.
+They will put their city, their street number, and then maybe their unit number or postal code or
+whatever.
+But the point is, our first portions are now different.
+I'll say Toronto and the other person might say New York, but if another person in the same city as
+I am puts down their address, their first portion will look the same, right?
+So I'm in Toronto, I'll say Toronto and then my street number.
+Another person is in Toronto and they will say Toronto and their street number.
+But people who are in New York will say New York and their street number.
+Same is true here.
+The first portion will kind of regard like a city, and then the last portion will act like, you know,
+the subnets of that network.
+So all these children of that network, if that makes sense.
+Now we're going to talk about this more.
+But the point is that now we set up something that every single computer right now could talk to each
+other.
+So this computer right here could now specify the IP address of this computer or maybe this computer.
+And they could now talk to each other.
+They could now send bits to each other.
+And if you can send bits, if we can send zeros and ones, you can actually send anything you want.
+You can send a huge file.
+You could send video file applications.
+It doesn't matter.
+So this is what the internet really is.
+It's just so many computers, so many computers, millions of computers, billions actually, that are
+connected together using cables, switches and routers.
+And each one of them have their network card.
+So they could now connect to the network either using an Ethernet cable or maybe using Wi-Fi, or even
+using cellular connection like 4G or 5G.
+And now each one of these devices have their own unique IP address.
+So as long as you're connected to the internet, it means that you are connected to this huge, vast
+network.
+And you could now just specify an IP address of a computer of a device, be it a server, be it a laptop.
+It doesn't matter.
+It could be anything.
+And when you specify that IP address, given the fact that, of course, that computer with that IP
+address is sending some.
+Formation through that IP address.
+You could now talk to it.
+And that device, that endpoint could now send you information.
+Well actually apart from the IP address you also need to know the port.
+Because let's imagine this very computer right here 3000.
+This computer could maybe send various informations on its different ports.
+So for example on port 3000 it might send a website and maybe on port 6000 it might maybe send an image
+or maybe on port 22 it might be an SSH.
+So if this computer specifies this IP address but also specifies the port, maybe port 22 will get access
+to the whole computer.
+And it could now, you know, get access to the whole disk, you know, delete everything.
+Or maybe just copy something or do whatever that computer wants with this computer, because now this
+computer has access to this whole computer.
+Given the fact, of course, that it could specify the IP address, the port and also the password.
+And of course, this computer should allow it.
+So in its network settings, it should allow that traffic that comes through that specific port should
+be, you know for my SSH.
+So you could see that how the internet right now works.
+As many, many computers were again connected together.
+So if you right now pick up your phone, open up a chat application and send a message to your friends,
+maybe in Europe, and you might be, I don't know, maybe in Canada or United States.
+Well, that message is traveling through these cables, these switches and routers to get across from
+United States to Europe.
+So there is a physical connection right now between you and you might be maybe in California and your
+friend might be maybe in Paris.
+There is a physical connection between you two.
+If you're talking together using internet, if you are FaceTiming each other, or if you are chatting
+together and you're sending messages across, there's a physical connection between you two.
+You might be saying, well, that really sounds bizarre.
+I mean, I'm in California.
+That person is in Europe.
+There's a vast ocean that separates us, so there is no physical connection.
+Right.
+Well, the answer is no.
+Wrong.
+There is actually a physical connection right now between you and that person in Europe.
+If you are connected together.
+And I know it might not really make sense, but that's the facts.
+
+
+
+
+Now you might be using wireless or 4G or 5G, but still it's the same concept that is only in the short
+distance.
+So if I'm connected to a Wi-Fi right now, I am connected to a router and that router is connected to
+the whole internet.
+Well, when you go on ahead and you try to buy one of those wrappers.
+So imagine you first buy your computer, and that computer has no way of communicating with the outside
+world.
+So there is no internet in it.
+And this is your first computer.
+You've never bought internet from anyone else.
+So what would you do?
+I mean, how would you think you could now connect to your computer with your laptop, to this huge,
+vast network so that you could just specify the IP address of one computer anywhere in the world and
+be able to talk to them, be able to exchange information back and forth.
+Well, the way you could do this is that you should use some companies which are called ISPs or internet
+service providers, and these ISPs will actually give you internet.
+So their job, their sole purpose is to give you a way of connecting your devices to this huge, vast
+network.
+So that's basically what an ISP does.
+So when you first buy a mobile phone or maybe a laptop, it's not.
+It doesn't magically know how to connect to the internet, right?
+What you do is that you were going to go ahead and buy maybe a cellular plan or a phone plan or whatever,
+and then when you buy that, you will buy a SIM card and then insert it into your phone, or it might
+be an eSIM.
+It doesn't matter.
+But what happens is that you are buying something.
+A plan that will allow you to connect to this whole network, right?
+Same when you buy a router.
+So for your home, if you want to connect your home to the internet.
+So anybody who comes to your home could just, you know, connect to your Wi-Fi.
+And now they boom, they magically have access to the whole internet.
+That is what you do.
+You buy a router.
+Now when you usually buy a router, it's not a router .
+It's actually a router and a switch and maybe a wireless thing in it.
+
+
