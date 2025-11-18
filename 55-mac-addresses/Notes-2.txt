@@ -1,0 +1,142 @@
+What is a Frame and What is a Packet?
+
+In networking, frame and packet are two different layers of the same idea: sending data from one machine to another.
+Think of it like sending a parcel:
+
+The frame is the box used inside your building (LAN).
+The packet is the content inside the box, which might later travel farther (LAN → internet → WAN).
+
+Let’s break it down properly.
+
+✅ Frame (Data Link Layer – Layer 2)
+
+A frame is the unit of data used inside a LAN (Local Area Network), such as when computers communicate through a switch.
+
+A frame contains:
+
+Source MAC address
+Destination MAC address
+Data (payload)
+Error checking information
+
+Where is it used?
+
+Frames are used at Layer 2, meaning:
+
+Ethernet
+Wi-Fi
+Switches
+Switches understand frames, not packets.
+
+Example:
+
+When you send data to Bob’s computer over a switch, the switch receives a frame that has:
+
+Destination MAC address = Bob’s MAC
+Source MAC address = Your MAC
+Payload = the actual data
+
+✅ Packet (Network Layer – Layer 3)
+
+A packet is the unit of data used at the Network Layer, where data travels across different networks, not just inside your LAN.
+
+A packet contains:
+
+Source IP address
+Destination IP address
+Payload (which later becomes part of the frame)
+
+Where is it used?
+
+Packets are used at Layer 3, meaning:
+
+Routers
+Internet communication
+IP-based networks
+
+Switches do not understand packets. They only understand frames.
+
+🔗 Relationship Between Packet and Frame
+
+When you send data:
+
+Your computer creates a packet.
+This packet includes:
+
+Source IP
+Destination IP
+Data
+
+The packet is then put inside a frame.
+The frame adds:
+
+Source MAC
+Destination MAC
+
+This is like:
+
+Packet → the letter inside an envelope
+Frame → the envelope itself
+
+The switch reads the envelope (frame) and forwards it to the right computer using MAC addresses.
+
+The router, on the other hand, reads the letter (packet) to forward it to another network using IP addresses.
+
+🧠 Summary (Super Simple)
+Term	Layer	              Uses	              Contains	                         Understood By
+Frame	Layer 2	      LAN communication   	    MAC addresses + payload	                 Switches
+Packet	Layer 3	  Internet/WAN communication	IP addresses + payload	                  Routers
+🟦 Short answer in one sentence
+
+A frame is a Layer-2 Ethernet data unit containing MAC addresses, while a packet is a Layer-3 IP data unit containing IP addresses;
+ packets are placed inside frames when sent over a local network.
+
+
+ What is Ethernet? (Simple Answer)
+
+Ethernet is the technology used to connect computers in a Local Area Network (LAN).
+It defines how computers communicate using cables, switches, frames, and MAC addresses.
+
+In the earlier explanation:
+
+The cables you plug into your computer → Ethernet cables
+The switch you connect them to → Ethernet switch
+The frames sent between computers → Ethernet frames
+The MAC addresses on network cards → required by Ethernet
+
+So Ethernet is simply the rules + physical system that allow computers to talk to each other using wires.
+
+✅ Key Points (Easy to understand)
+
+1. Ethernet = Wired networking technology
+
+It uses:
+
+Ethernet cables (like Cat5, Cat6, Cat7)
+Network switches
+Network interface cards (with MAC addresses)
+
+2. Ethernet defines how data moves
+
+Ethernet defines:
+
+how to format data (frames),
+how to identify devices (MAC addresses),
+how errors are checked,
+how devices share the same cable.
+
+3. Ethernet is everywhere
+
+Used in:
+
+offices
+schools
+servers
+home Wi-Fi routers (the LAN ports)
+
+data centers
+
+🧠 Super Simple Summary
+
+Ethernet is the standard system for wired networking. It uses Ethernet cables, 
+switches, MAC addresses, and frames to let computers communicate inside a local network.

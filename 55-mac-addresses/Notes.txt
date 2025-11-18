@@ -1,0 +1,174 @@
+
+**Refer 55-1.png image**
+
+what would you do maybe 20 years ago or 30 years ago if you wanted to share
+some amount of information between two computers?
+So imagine this is your computer and you want to share some information with another computer.
+So there might be this guy in your company.
+For example, his name is Liam and this is his computer.
+Now, Liam could be in your company or maybe in your building.
+In your home.
+Doesn't matter.
+The point is, we have two computers, and now we want to share some amount of information between these
+two computers.
+So back in the old days when we didn't have technologies such as networking cables such as routers,
+IP addresses, networking cards
+But without those technologies invented, or maybe they were invented, but they're not as prevalent
+as they are right now.
+And I'm talking about maybe 20 years ago or 30 years ago, not maybe 100 years ago or 50 years ago,
+just fairly recently, actually.
+And those days, there was no connection between these two computers, right?
+There was no network or anything to connect these two computers together.
+It was just a computer.
+It was just a CPU, a Ram, a storage, and that was pretty much it.
+There was no networking card.
+There was no networking cable connecting these two together.
+So there was no connection between these two computers or any other two computers in the world when
+these networking technologies were not invented.
+So what you would do if you wanted to share information was like this.
+You would have to use something physical, maybe a floppy disk.
+You might remember it.
+We don't use them right now.
+I mean, I've never seen them in like maybe five, ten years.
+I don't remember, but I haven't seen them in like forever.
+But they were pretty prevalent maybe 20 years ago.
+So you would have to use one of these devices, maybe a floppy disk, a CD, a DVD, a flash disk,
+whatever.
+You would have to pick one of these up, and then you would have to physically insert that floppy disk
+into your computer, and then you would have to save that information, write that information onto
+that floppy disk, maybe that image that you want to share.
+And then you would have to pull it out and then walk all the way over to Liam's computer and put that
+disk into Liam's computer, and then save that file off of that floppy disk onto his computer.
+So this is what you would have to do if you wanted to share information between two computers.
+So it could be an application, an image, PDF, a piece of message.
+This is what you would have done back in the old days, maybe 20 years ago, 30 years ago now, if Liam
+maybe was in another continent.
+So you might be maybe in North America and Liam might be in Europe.
+If you just wanted to share an image, you would have to board a plane.
+You would have to buy another plane tickets, fly all the way over to Europe and then give Liam the
+disk.
+This is how you would have done it.
+And you can imagine that this was not practical at all.
+I mean, we would have two computers in the same company, and we would constantly want to share information
+between these two computers.
+It was super impractical to maybe hire someone to just move a floppy disk around all the time, or you
+would have to stand up and walk all the way over.
+It was just super impractical.
+And this is how it was done a couple of years ago.
+
+
+**Refer 55-1 to 55-6 images**
+
+
+So what happened afterwards?
+I mean, right now with the networking technologies in place.
+So let's see how we would do it right now.
+Let's see how we can now connect these two computers together.
+So imagine this is your computer again.
+And then this is Liam.
+And imagine we have maybe a couple more people here in our company.
+So Janet and Bob, and now we want to set up a way to make sharing information between these computers
+in a much, much easier way than using a floppy disk or a USB or something like that.
+So what we would do in this case is to first have to use a switch.
+So switch is the basic the most basic thing in networking.
+Well first is an Ethernet cable.
+The most basic one is a cable which simply just moves bits around
+But after cable, the most basic thing in a network is a switch.
+Now if you're wondering to know how it looks, this is how a switch looks like.
+So this is how we would set up a network.
+You would first have to buy the cables which is the most basic form.
+And then after you buy the cables you have to buy one of these switches.
+And after you buy the switch, which is in this purest form, you would have to connect that switch
+to your computer, your laptop, using a special cable that comes with the switch, and then you would
+have to log into the switch and manually configure it.
+Just like that, you would SSH into your servers and, you know, SSH into a computer and then configure
+it.
+You would have to I mean, you have to configure a switch when you buy it.
+So you would have to configure how data is flowing in the switch.
+The next step is to connect these computers together using that Ethernet cable, that image that we
+just saw.
+So we'd have to connect each one of these computers individually to that switch.
+Now if you want to do this, if you want to use the cables, your computer needs to have an ability
+to accept that Ethernet cable, which is a special type of cable.
+And the way that your computer does that is using a networking card.
+So nowadays when you buy a laptop, a MacBook, an iMac, the networking card comes built in with it,
+and that networking card has a unique address associated with it, which is called a mac address.
+So each one of these computers, assuming that they do have the networking card either built in or manually,
+so previously, I mean, I don't remember how it's done if you want to assemble a PC, but maybe a couple
+of years ago, if you would, if you were to buy a PC and assemble it yourself, you would also have
+to buy a networking card and install that on your PC.
+And right now, as I said before, all the computers, laptops, they that networking card comes built
+in with them.
+
+But if you imagine if you want to assemble one yourself totally from scratch, you would have to buy
+that networking card yourself.
+And also the first PCs that came in, I think maybe 30 years ago, I'm not quite sure they didn't have
+the networking card built into them, so you would have to do it manually.
+You would have to buy networking cards which had this Mac address on it, and then you would have to
+install that on your machine.
+So these networking cards have a unique Mac address burned on them.
+So your Mac address might be this, Janet's might be this, Liam this and Bob this.
+Your computer right now has this Mac address.
+And by the way, these are real Mac addresses.
+And by real I mean that they look real.
+Mac address is 48 bits.
+And the bits in this case are represented using hexadecimal.
+So as we said before, whenever you see hexadecimal it just means zeros and ones.
+Each hexadecimal character is four bits.
+So we have 12 of these characters, which in total means 48 bits.
+
+So now we have our computers and we have the switch.
+And we also have cables.
+And we also have these Mac addresses.
+Now imagine that you want to send some amount information over to Bob's computer.
+So what you would do in this case is that you would now send a packet.
+So a packet looks like this.
+Now when we're talking about switches we usually call them a frame.
+But don't worry too much about the terminology.
+We're just going to call them a packet.
+And just a second I'm going to talk more about what is a packet and also what is a frame.
+But basically right now let's just call it a piece of information.
+And then we're going to talk about it later.
+So if you want to send some amount of information, some amount of data over from your computer to maybe
+Bob's computer, you would have to send one of these packets over to the switch.
+And in this packet you have to specify some important information.
+First of all you have to specify the source.
+So you would have to say that this is me sending the information.
+And you would also need to specify the destination Mac address like this.
+And then also of course your piece of data that you want to send.
+Now you would send this packet to the switch.
+The switch is now configured.
+It knows all the computers that are connected to it and their Mac addresses.
+So it knows how to route this packet.
+It takes a look at this destination which is f 131 and then the rest.
+It checks all the computers and sees which one has this Mac address.
+In this case it's Bob's.
+So it's going to send this packet over to Bob's computer.
+And now Bob receives this packet through its networking card.
+So now its operating system could pull that information out and do whatever it wants with it.
+So it could maybe write that piece of data.
+It could extract this data and then write it to a file, or it could just display it on the screen.
+It doesn't matter.
+The point here is that now you could send some amount of information from one computer over to any other
+computer that is connected to this switch, and we call this a network.
+So this is how you would now set up a way to communicate between different computers in a much, much
+easier way, comparing to using a floppy disk or using a USB.
+It's much more efficient.
+It's much, much faster.
+You don't really have to get up off your seat and then walk over to a computer.
+If you want to send some information to that computer, you would just have to issue these packets.
+All you have to do is to just specify the source, which is something automatic.
+It's unique to you.
+So basically you just have to specify the destination and the data and that's it.
+The switch will handle all the rest.
+So the switch is configured.
+It knows that each one of these inputs.
+Years are the real world example of a switch.
+It knows that each one of these inputs, for example input seven, corresponds to a specific Mac address.
+So if a data packet arrives with that destination Mac address, it will just redirect it through that
+input seven.
+So the data will come out from this input seven, which is connected to that computer with that specific
+Mac address.
+So this is how you would now set up a very simple.
+Network of different computers.
+And just by knowing the Mac addresses, you could now send information back and forth.
