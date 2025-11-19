@@ -1,0 +1,222 @@
+📘 Networking Notes — MAC Address, IP Address & Port Numbers (Simple + Practical)
+
+These notes explain in clear, simple terms why MAC, IP, and port numbers exist, 
+where they are used, and how your HTTP request really travels.
+
+🔹 1. Why do we need three different identifiers?
+Purpose	                                    Identifier	                  Layer
+Identify which application	               Port number	         Transport layer (TCP/UDP)
+Identify which device on the internet	     IP address	               Network layer
+Identify which network card on a LAN	     MAC address	           Data Link layer
+
+Each solves a completely different problem.
+
+🔹 2. What is a MAC Address?
+✔ A MAC address is the physical address of your network card
+
+Example:
+
+A4-7C-1F-33-9B-22
+
+✔ Where MAC is used?
+
+ONLY inside your Local Network (LAN)
+(your home WiFi, office network)
+
+✔ Who uses MAC addresses?
+
+Switches
+Your network interface card (NIC)
+WiFi access points
+
+✔ Why MAC is needed?
+
+Because IP addresses cannot be used on cables or WiFi signals.
+The data link layer uses frames, and frames require MAC addresses to deliver data to the correct device physically.
+
+📌 MAC = “Which device on this network should receive the frame?”
+🔹 3. What is an IP Address?
+✔ IP address identifies a device on the internet
+
+Example:
+
+192.168.1.50
+203.45.67.123
+
+✔ Where IP is used?
+
+For routing packets across networks
+
+Routers use IP to decide where packets travel globally
+
+✔ IP = “Which computer in the world should receive the packet?”
+
+🔹 4. What is a Port Number?
+✔ Port numbers identify the application inside the computer.
+
+Your laptop:
+uses many apps at once (browser, Spotify, VSCode)
+all need internet access
+port numbers separate the traffic
+
+✔ Ports are NOT physical
+
+They are software-level identifiers.
+
+Examples:
+App/Protocol	Port
+HTTPS	          443
+HTTP	          80
+SSH	              22
+DNS               53
+
+📌 Port = “Which application should receive this data?”
+
+🔹 5. Why port numbers are required?
+
+Imagine 2 browser tabs connect to the same website:
+
+IP is same
+
+Destination port is same (443)
+
+How does your computer know which tab gets the response?
+
+Because each tab gets a different source port:
+
+Tab 1 → 50122
+Tab 2 → 50988
+
+
+The server sees them as two different connections.
+
+🔹 6. How servers handle millions of users on port 443
+
+Servers differentiate every user by a 4-tuple:
+
+(Source IP, Source Port, Destination IP, Destination Port)
+
+
+Example:
+
+User A:
+
+10.0.0.5:51123  →  93.184.216.34:443
+
+
+User B:
+
+10.0.0.8:60144  →  93.184.216.34:443
+
+
+Different source ports → completely separate connections.
+
+🔹 7. Full Step-by-Step: What happens when you visit https://example.com
+
+Let’s break down the entire journey.
+
+🧩 Step 1 — Browser creates the HTTP Request
+
+Example:
+
+GET / HTTP/1.1
+Host: example.com
+
+🧩 Step 2 — Transport Layer (TCP) adds:
+Source Port: e.g., 50122
+Destination Port: 443
+
+
+Ports identify which app is sending the data.
+
+🧩 Step 3 — Network Layer (IP) adds:
+Source IP: your public IP
+Destination IP: example.com server IP
+
+
+IP identifies which computers are talking.
+
+🧩 Step 4 — Data Link Layer (Ethernet/WiFi) adds:
+Source MAC: your network card
+Destination MAC: your router's MAC
+
+
+MAC is used only inside your LAN.
+
+🧩 Step 5 — Physical Layer
+
+Everything becomes 0s and 1s, then electrical/light/radio signals.
+
+🧩 Step 6 — Your router receives it
+
+Router removes:
+
+your MAC address
+
+replaces it with its own MAC
+Keeps:
+
+your IP
+your source port
+Router sends the packet to the next router.
+
+🧩 Step 7 — Internet routers
+
+They only look at:
+
+IP addresses
+
+Not ports
+Not MAC
+Not HTTP
+
+They route it toward the destination server.
+
+🧩 Step 8 — At the server’s data center
+
+Final switch uses MAC to deliver the frame to the correct server machine.
+
+Server receives:
+
+dest IP (its own IP)
+
+dest port (443 → HTTPS)
+
+source IP (you)
+
+source port (your random port)
+
+🧩 Step 9 — Server sends response back
+
+Response flows back using:
+
+Same 4-tuple
+
+Same path in reverse
+
+Your OS uses the source port to deliver the response to the correct browser tab.
+
+🔹 8. Quick Summary (Keep This!)
+✔ MAC Address
+
+Used in LAN only
+Identifies network card
+Used by switches
+
+✔ IP Address
+
+Used on the internet
+Identifies the computer
+Used by routers
+
+✔ Port Number
+
+Used inside the computer
+Identifies the application
+Used by transport layer (TCP/UDP)
+
+Together:
+
+MAC → delivers frame inside LAN
+IP → delivers packet across internet
+Port → delivers data to correct app

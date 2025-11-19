@@ -1,0 +1,219 @@
+Now that you have some understanding about how networking works and how the internet works, let's now
+talk about networking layers.
+Now we really didn't define what exactly is networking.
+And we also said that networking has these layers like the physical layer like those cables and then
+switches and whatnot.
+But we didn't really define networking layers.
+And also what exactly networking is.
+Now one definition that I can give about networking is that it's just a way of communication between
+computers.
+And the biggest network that we can think of right now is the internet, that all the computers are
+connected together, and they could all talk together, or we could have a smaller network.
+So you could right now set up a network in your own home, just like that.
+I did right now with my MacBook and iPad.
+So I connected them to a router, and right now I have a private network for myself.
+You whenever you are, you have no way to connect to my network.
+So that node application that I have, you cannot connect to it unless you first connect to my network
+first.
+And the way that you can do it is to connect to my router.
+So this is what we mean by networking.
+Just a way of communication between computers.
+And this whole networking concept has some layers to it.
+So let's now talk about these layers.
+
+Now the first layer, the most basic layer is the physical layer.
+Now here we're talking about cables.
+And the way that information is moved here is using bits.
+All right.
+So you have a cable like an Ethernet cable that comes with RJ 45 connectors.
+And that's the most common form of a networking cable that you can buy right now.
+And you can use to connect your laptop to a router and so on.
+So this is the most basic layer of the whole networking concepts.
+
+Now on top of this layer.
+Now this layer again just cares about zeros and ones and how to move them across.
+It has no idea about data.
+It has no idea what is an IP address.
+What is a mac address?
+Nothing.
+It just gets some zeros and ones and it moves them across.
+Now, this is of course, really useless on its own for us, because what can you do with those zeroes and
+ones?
+I mean, you were just getting some zeros and ones.
+You have no idea where those are coming from, which machine is sending them and also what that data
+is representing.
+
+So on top of physical layer we have something called a data link layer.
+Now this is where all the switches will come into play.
+And this part moves data and frames.
+So in data link we have switches.
+And these switches will receive those zeros and ones.
+And they will combine them into this whole frame thing.
+So they will extract the Mac address the data, the destination Mac address, the source Mac address.
+And they will create this kind of neat concept, neat thing called a frame.
+And then they will figure out which machine has that destination Mac address and send that frame across
+to that machine.
+And when it's sending it again, it's sending it using the physical layer.
+So it sends those zeros and ones using the physical layer using the cable.
+That machine will receive those zeros and ones.
+And the network card on that machine will transfer those into again a frame.
+
+Now on top of the data link layer we have the network layer.
+And this is where we have packets.
+Now this is where routers will come into play and IP addresses.
+And this is a very important part because without this in place we cannot have a concept like internet
+or a huge networks because well a switch could only handle so many.
+If you want to go crazy and have hundreds of computers, some of them might be in one building, another
+one in another building, another one in another city.
+You will have a lot of routing to do, you know.
+So that is where the network layer will come into play.
+And here it uses packets and it also uses IP addresses.
+
+Now on top of the network layer.
+Because again the network layer on itself is kind of useless.
+I mean yeah it's very important part.
+I mean you could get a packet and you could get some zeros and ones and you will now know how to route
+it
+Right.
+So you know which machine send that and you know the destination that it should go.
+For example, we might send some data from San Francisco over to Toronto.
+There's a huge distance between these two.
+But the network layer, all those routers in between, know how to route that traffic.
+So they know which router now to choose to route that traffic to.
+And that router will now determine which other routers to choose.
+And they do that based on IP addresses.
+Now on top of this we have something called transport layer.
+And here when information is moving in this layer we say we usually call them segments.
+Now transport layer makes sure that those packets that you're sending it gets across safely.
+And if maybe one of them gets lost, which is actually pretty common, it will maybe resend or retransmit
+that packet, right?
+So it will figure out that the packet was lost.
+So it will tell the destination actually the source to send it again, and then it will receive it.
+So it's all about moving the data and connection.
+
+Now on top of this, now that we have a way to move data to transport data and make sure that we are
+receiving the exact bits that were sent.
+Now we have this big layer which is called application layer.
+Now in this layer, when we say the data is moving in this layer, we just say data.
+So this is where we really care about in NodeJS.
+All right.
+So now this is where we set up our Http applications where we set up maybe an email server application,
+an FTP server SSH and many, many other things.
+So now that we have a way of communication.
+So now that we know how to transport data safely, we could now set up something to kind of make sense
+out of those data that get sent across.
+So these are the layers of networking.
+
+It starts from the very bottom physical layer.
+And then it goes all the way up to application.
+So a lot is going on when you just send an Http request or when you just open a Google page.
+And again in each layer.
+We care about some specific things that we don't really care about in another layer.
+Now there is something that links these layers together.
+For example, here in this layer, there's something that kind of links this to the network layer and
+so on and so forth.
+For example, in the transport layer the port is specified.
+So that port is kind of linking this transport layer to this application layer.
+
+Now of course not everybody agrees with this layering thing.
+I mean we have some other definitions for these layerings, but the concept is pretty much the same.
+For example, there is this other model which is called the TCP IP model, which puts the bottom two
+layers into only one layer, called the network access layer.
+And it also calls the network layer the internet layer.
+But the rest is the same.
+But as you can see, the concept is pretty much the same.
+The TCP IP model just says that we could regard the bottom two layers as one layer.
+And also there is this other model called the OSI model.
+And in that model it breaks the application layer into three layers a session layer, a presentation
+layer, and an application layer.
+But then again, you don't really need to care too much about them.
+
+Now the whole reason that we have these layering stuff is because this networking concept is pretty
+complex.
+I mean, moving information from one computer and to another computer and making sure that we're receiving
+the exact same bits and also making sense out of it.
+It is some complex stuff.
+And because it's so complex, we try to break this huge problem into smaller problems so that now each
+team could just work on one problem at a time.
+So a couple people could just work in the physical layer.
+And then the data link layer is separate from that physical layer.
+And also the application layer is separate from the network layer and so on.
+So this is why we do it.
+
+We're just trying to break a huge problem into simpler and smaller problems, so that we can now work
+on one of them at a time.
+This is the whole reason that we have these layers.
+So you will see some other people who divide this concept into different things.
+But this concept is the same.
+We have bits, we have switches, routers, a transport layer and then some way to move the state around.
+Now somebody might call these layers into one thing, another one might call three layers into one thing.
+Again, it does not matter at all.
+So let's do another quick recap.
+
+So in physical layer we care about signals and binary transmission.
+And the way it works is that imagine you have a cable.
+And when there's light in it it means a one.
+And if there is no light in it, it means a zero.
+And that happens quite fast.
+And there is a time frame, kind of like a clock synchronization that figures out how often this happens.
+For example, each millisecond it will check it.
+So a second has 1000 milliseconds.
+And it will see in one of those, each one of those milliseconds if there is light or not.
+So what it means right now is that in each second it could move 1000 bits, because each second is divided
+into 1000 milliseconds, and it checks in each one of those milliseconds whether or not there is light.
+Now, networking cables that we have right now are much, much faster than 1000 bits a second.
+In fact, the latest cable Cat eight, I guess, which is again an RJ 45 cable, it's a ten Gigabit
+Ethernet, which means that it could move information 1 billion bits a second, which is a lot of data.
+It means that you could now move data one gigabyte in each second.
+So we're talking about some fast speeds when we're talking about physical layer.
+It's incredibly fast one gigabyte of data and each second incredibly fast.
+
+
+
+We care deeply about Mac addresses because we want to know that if data is coming, what Mac address
+is sending that data, and also what machine that's connected to our switch has that Mac address and
+data link.
+We care a lot about Mac addresses now in network layer, we care a lot about IP addresses and also path
+determination.
+Now in this layer we have to care deeply about how to assign IP addresses and also how to move information
+across.
+For example, you might have thousands of routers and now you need to know how to get information from
+one endpoint to another endpoint.
+And what is the shortest path to take.
+So a lot is going on here.
+But again it's not really our job.
+We do need to understand IP addresses and have some sense about how they work, but it's not our job
+to learn how to assign IP addresses and also how to move this information, and how to choose the shortest
+path from one endpoint to another endpoint.
+Now in transport layer here.
+We care about end to end connections, and there are now two main protocols that we use in this layer.
+One of them is TCP and another one is UDP.
+So you could use one of these protocols to move information from one point to another point.
+Now we're going to talk a lot about TCP and UDP.
+And we're going to see how they differ and which one to choose.
+Now as a node developer, the layer that you really, really care about and the layer that you're working
+in is the application layer.
+
+All right.
+
+So this is your job as a node developer.
+This is the job of any other back end developer.
+You don't need to care about Mac addresses as a back end developer.
+
+Now some examples that would fall in this application layer would be one of them Http.
+Another one maybe SMTp servers which are for email servers or in general email servers, SSH, FTP,
+which is a server to move files around.
+So it's not just Http.
+There are many more protocols out there that fall into this application layer.
+So it's a very complex layer.
+And you could do all of these things using NodeJS.
+So you could create an SSH application from scratch using NodeJS.
+Because SSH is on top of TCP.
+FTP, which is a file uploading protocol, is built on top of TCP.
+And also some other protocols are built on top of UDP, which we're going to talk about later.
+But this is what we really mean when we say networking.
+And Node.js is a networking application.
+Its main purpose is to develop networking applications.
+So now that we have a way to move data around using TCP and UDP.
+
+
