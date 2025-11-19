@@ -1,0 +1,117 @@
+📘 Networking Basics – Summary Note
+
+🔌 1. How Devices Communicate
+
+All devices (phones, computers, servers) communicate by sending bits (0s and 1s).
+
+To move data between devices, we use:
+
+Cables → transport electrical/optical signals
+Switches → connect devices inside the same local network (LAN)
+Routers → connect different networks together using IP addresses
+
+Internet Service Providers (ISP) → connect your home or phone to the global internet
+
+🖧 2. Switch vs Router
+
+Switch
+
+Works with MAC addresses
+Connects devices inside a single network (example: computers in one office or house)
+Does NOT connect to the internet
+
+Router
+
+Works with IP addresses
+Connects multiple networks together
+Routes traffic to the correct destination
+
+Your home router includes:
+
+router + switch + WiFi radio (combined in one device)
+
+“Router on top of Switch”
+
+This means:
+
+First a switch connects computers inside a small network
+Then a router connects these networks to other networks (including the internet)
+The router sits logically above switches in the network hierarchy
+
+🌐 3. IP Addresses
+
+IP address = like a home address for your device
+
+Each device gets a unique IP
+
+First part = network (like city)
+
+Last part = host (like house number)
+
+Used by routers to decide where to send data
+
+Example:
+
+192.168.1.5
+↑ network  ↑ host
+
+📡 4. 4G and 5G – What They Actually Do
+
+4G and 5G are mobile network generations.
+
+G = Generation
+
+They provide wireless communication between:
+
+📱 Your Mobile Phone ↔ Nearest Cell Tower
+
+They transmit:
+
+Internet data
+
+Voice calls (VoLTE)
+
+Messages
+
+App data
+
+They use radio waves, not cables, for this part.
+🧵 5. There Is Always a Physical Connection
+
+Even though your phone uses wireless signals:
+
+Wireless part:
+
+📱 Phone → (radio waves) → Cell Tower
+
+Wired part:
+
+Cell Tower → (fiber/underground cables) → ISP → Internet → Servers → Other devices
+
+This is why we say there is always a physical connection somewhere in the path.
+
+Your phone only avoids cables between you and the tower.
+After the tower, everything travels through physical fiber cables.
+
+
+🛰️ 7. How Your Phone Connects to the Internet
+
+Your phone sends data to the cell tower using 4G/5G signals
+
+Tower sends it through fiber cables to your ISP
+
+ISP connects to the global internet
+
+Data travels to websites, apps, or other people
+
+Response returns the same way → tower → your phone
+
+📘 Summary
+
+Switch connects devices inside one network
+Router connects different networks and the internet
+IP address uniquely identifies devices
+4G/5G handle the wireless part of communication
+Real internet backbone = routers + switches + fiber cables
+Wireless only covers phone ↔ tower
+Everything else uses physical connections
