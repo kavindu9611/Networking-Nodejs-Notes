@@ -90,38 +90,6 @@ Net module for tcp
 And this other module datagram module for creating UDP applications.
 And we're going to see an example of that later on.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let's first try to understand how TCP works.
 So let's say that we have two computers two endpoints.
 And we want to send some data.
