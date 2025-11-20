@@ -1,0 +1,124 @@
+const net = require("net")
+
+Using Net module in node, you could create a TCP server or you could send TCP requests.
+It's just here for us to help us with this whole TCP thing.
+So it's the lowest level that you can get in node when you want to do networking.
+Now you might be saying, yeah, I've used some networking modules like DNS or maybe Http.
+So there are some other networking modules in node, but all of these modules are actually built on
+top of the.
+Net module.
+So Http is one layer on top of the.
+Net module because this module is the lowest level possible in node.
+This is the lowest level networking that you can do in nodes.
+You cannot go any lower than this in node js, but you could definitely go higher.
+For example Http is built on top of the.
+Net module.
+You could build an SSH server on top of the.
+Net module.
+So it's pretty low level and actually pretty simple to understand.
+There isn't really a lot to it, but because it's so low level, it's also super powerful.
+So you could do a lot of things with this.
+Net module.
+And we're going to see some examples in just a bit.
+So now that I've included my.
+Net module I'm going to create my server.
+
+For each application, for each networking application you need to have a port.
+Otherwise the request the traffics that are coming to your computer, they have no idea where to get
+routed to.
+So every networking application that you create should have a port number.
+And in this case I'm just going to specify maybe 3099.
+Again doesn't have to be this.
+But there's also a specific range about this port.
+But we're going to talk about them again later.
+And with this in place now I have to specify my IP address where I want to run this NodeJS application.
+And I'm just going to specify my loopback address.
+So 127 .0.0..
+And once my server is running, this callback function is going to get called.
+And right here I'm just going to log a simple message.
+First it's going to give me the IP address that the server is listening on.
+In this case it's my loopback address.
+It's going to give me the family type of the internet.
+So that third layer that we talked about, the networking layer or the internet layer, it could be
+either an IP version four or IP version six.
+In this case this is running on IP version four, which is again something that we're going to talk
+about when we get to talk about IP addresses.
+And also it's going to return the port number that the server is now listening on.
+So now that I have my server running on this IP address and on this port, any other application right
+now could send a TCP request to this address.
+So any other TCP application out there, it could be in C plus plus Java.
+It could be anywhere in the world as long as it is connected to the internet.
+And I am also connected to the internet.
+What they can do is to specify my IP address and my port, and they're going to be able to send information
+to my application.
+Now of course this is a loopback address, but I'm talking about if we deploy this application and actually
+run it on another IP address.
+Well, in that case, anyone in the internet could send us information.
+
+So let's see how we could send some information to this server.
+So the socket is actually my connection.
+So if anybody connects to my application this socket is going to kick in.
+So if anybody connects to it I'm going to have a socket object.
+And if another one connects to it I'm going to have another socket object.
+All right.
+So let's just use it first.
+And then I'm going to explain more.
+So this socket is actually a stream and it is a duplex stream.
+So now that I have a connection a TCP connection what I can do is to both receive data and also send
+data.
+So now we could make use of those methods that we talked greatly about in the streams video, such as
+socket on data
+Right now be careful.
+If you want to write.
+You have to take care of all those draining stuff.
+But right now, let's first focus on just receiving some information.
+And then we're going to focus on more complex stuff.
+Now this is this method is just like before.
+There is nothing special to it.
+This data will get kicked in every time some amount of data gets available on this socket stream.
+And remember here in the callback you also get the data and it's a buffer.
+So what I'm going to do right now is to just log the buffer.
+And I'm also going to convert it into string because we're going to be able to make sense out of it
+in our terminal.
+So with this in place, we now have our very simple TCP server.
+
+
+And let's now create another file.
+And I'm just going to call it maybe simple sender.
+All right.
+Now in this file I'm going to create another TCP server.
+But in this case I'm going to send some data into this application.
+All right.
+ I'm going to create a socket.
+Now again we're going to talk in great detail about what exactly is a socket.
+But I'm just going to create it in this case using this method called create a connection.
+So using this method you could now create a connection with any TCP server out there.
+Here, I have to specify my addresses.
+Of course, my host.
+And also the port.
+So it accepts an object which you could specify two parameters.
+One is host.
+And here we have to specify the IP address which I'm going to specify my loopback address.
+So 127 .0.0.1.
+And this will now automatically know that it is IP version four and not IP version six.
+And also I'm going to specify my port which in this case it was 3099.
+All right.
+As the second parameter I could now specify a callback function like this.
+All right.
+And here in this callback function, what I'm going to do is to just make use of this socket, which
+is again a duplex stream.
+So I could both receive information on the socket and also send information on the socket.
+And the way that you can now send information from the socket is to just call the write methods.
+And again, we are now writing to a stream.
+So you do need to take care of all those draining stuff.
+But in this case we're just going to do it once and with just very simple data.
+So we're not going to do it right now.
+So here I'm just going to say a simple message coming from a simple sender.
+And now.
+This is pretty much it.
+But if we now go to our server, you could see that we received that message, a simple message coming
+Again, it's a buffer.
+It could be pretty much anything.
+
+
+
