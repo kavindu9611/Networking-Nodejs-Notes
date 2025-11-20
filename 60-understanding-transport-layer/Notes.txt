@@ -1,0 +1,267 @@
+So let's talk about TCP which is in this fourth layer.
+Now we talked about the network layer.
+We said that the network layer works with IP addresses.
+It gets a message.
+It breaks it down into different packets.
+And it moves it from point A to point B.
+And these two points could be anywhere in the world.
+One of them could be in your home, another one could be in another building.
+It doesn't matter.
+It just moves that information from point A to point B, but there are some problems with this approach.
+It's a pretty simple approach and so many things could go wrong.
+What if a packet gets retransmitted?
+So we're going to have duplicate packets on the end machine.
+How can we figure that out.
+There is no way to figure that out if we're just moving the data using the third layer.
+What if some of the packets get lost, which is actually pretty common?
+Again, there is no way for us to figure that out.
+What if the point B actually just turns off?
+So we're sending information from point A to point B, and point B all of a sudden just goes out of
+the way.
+It just gets shut down.
+Maybe the power just runs out and it's now a dead device.
+There is no way.
+Now for point A to figure out that.
+Point B is now out of the way.
+It just keeps sending those packets.
+And also, what if we have data corruption?
+There is no way for us to figure that out.
+So there could be some things that happen in this long way, in this long range, that data needs to
+travel.
+There could be some data corruption in place.
+And if that happens, if we're just in the third layer, there is no way for us to figure them out.
+That's the purpose of the fourth layer.
+It gets the data from point A to point B, it has no idea about IP addresses.
+It has no idea how data is transmitted.
+It just makes sure that data is received.
+And it will add some ports there to, you know, move the data to a specific application.
+Now, the name could be confusing.
+It says transport layer, but you have this thing in your mind that all the transportation has actually
+done in the network layer.
+Well, the answer is it's not.
+Transportation is not done in the network layer.
+It's done in all the layers.
+So the physical layer is also doing the transport.
+The name transport layer is there because it will add some port numbers to the packets.
+So we'll add some port numbers.
+And now this layer could identify the application layer.
+So we will know which application needs to receive those data.
+All right.
+So that's why we have this fourth layer.
+
+
+Now in this fourth layer we have two main protocols to move data around.
+One is TCP and another one is UDP.
+Now TCP.
+The main purpose of TCP is to make sure that the data that you're sending is received exactly as the
+way it is.
+So every single bit that you send TCP will make sure that it's received.
+And also it's not really changed in any shape or form.
+So TCP makes sure that every single bit that you are intending to send is actually sent over.
+So it does some stuff behind the scenes to make sure that the data is received correctly.
+For example, if you want to send a password, you have to make sure that every single bit of that password
+is correct.
+Otherwise, if you miss a bit, there is no way for you to check that that password was correct and
+you will get an incorrect password thing.
+So that's one of the ways that you have to use TCP.
+You have to make sure that every data, every bit that you are intending to send is actually get sent
+correctly.
+
+Now, UDP doesn't really care about that.
+You just send the message and that's it there.
+There's no way for UDP to figure out that the packets are sent correctly.
+A packet could get lost, but no one cares.
+Now UDP is really used in streaming stuff, for example video streaming applications or voice talking,
+FaceTiming and stuff like that.
+You have seen this probably when you're streaming a video or something like that.
+You you have seen some lost frames, but no one really cares.
+I mean, there are some frames that get lost, but there will not be retransmitted.
+They're just lost.
+Because in UDP we care a lot about speed.
+So UDP generally is much faster than TCP because it does much less work.
+It just gets some data and it transmits that data over.
+Some of those data could get lost, but it does not matter too much.
+So we have these two main protocols in this fourth layer.
+One is TCP and one is UDP.
+Now Http is built on top of TCP.
+SSH is built on top of TCP, but also some other applications are built on top of UDP.
+Now in NodeJS we have this.
+Net module for tcp
+And this other module datagram module for creating UDP applications.
+And we're going to see an example of that later on.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let's first try to understand how TCP works.
+So let's say that we have two computers two endpoints.
+And we want to send some data.
+Now TCP works in this way of three way handshake.
+So it first sends a packet over to machine B or to point B now.
+And point B will receive that segment and it will acknowledge it.
+
+So it will say all right I received this packet and it will send another request to machine A and say,
+hey, there you go.
+I am right here.
+
+I am now ready to receive more packets or more segments.
+And then machine A will keep sending more and more information to machine B, and there are some headers
+in place that TCP uses to make sure that all the data is received correctly.
+So let's take a look at some of these TCP headers.
+The first header is source port, which is the port that the request is getting sent from.
+For example, if we open a TCP server and we start that on port 8000 and we send a TCP request from
+that server, the source port will be 8000.
+And of course there should be a destination port.
+Now apart from these two we have a sequence number which is 32 bits.
+And we also have an acknowledgement number which is 32 bits.
+We're not really going to talk about how these work, but basically there are just some numbers.
+So packets that are getting sent over TCP are numbered.
+So the first packet has number one, second one has number two and so on and so forth.
+So if we receive packet one and then packet two and then packet four.
+Now we have a way to figure out that packet three was not received.
+So the endpoint A will retransmit that packet three.
+So endpoint B the receiver will say that hey I didn't receive packet number three.
+And then the sender will retransmit packet number three.
+And then also the acknowledgement number which kind of indicates what should be the next packet that
+the receiver is expecting.
+Then we have some other headers here, but we're not going to talk about them.
+For example the window header which indicates how big the packets should be.
+So at first the packets are getting sent in very small chunks.
+But as time goes by they are getting bigger and bigger, and then they will get to a specific point
+and they will be fixed.
+
+At that point.
+
+You have probably noticed this when you try to download a file, the file, the network speed.
+As you can see, the download speed is pretty low at first, but after just a couple of seconds it gets
+higher and higher.
+That's the window size, which is a header and the TCP header.
+And it gets bigger and bigger until it gets to a point that it will figure out that if I send a packet,
+if that TCP send a packet bigger than that, there is going to be some problems.
+So it will get it at that point.
+And some other headers.
+For example, something like Finn.
+Finn that indicates whether or not the request is finished.
+And a couple more.
+We're not really going to talk about.
+And then we have our data, which is actually optional.
+So we saw in the Wireshark that some TCP segments were getting sent over, but there were no data in
+place because data is actually optional and you don't need to send the data, for example, in the three
+way handshake, when you're trying to make sure that the connection is there, well, you don't need
+to send any data, right?
+You just send some headers and that's pretty much it.
+So this is our TCP header.
+And well the TCP segment I should say not really the header.
+This part is the header.
+And this is the data.
+So this whole thing we call this a segment.
+Now notice that there are no source IP address and destination IP address.
+And also no nothing to indicate the Mac addresses.
+And the reason is.
+If we go back to our layers.
+Each layer will add its own headers to the frame.
+So application layer is just some amount of data, and you could optionally add some headers for your
+own use cases.
+But networking wise we don't care.
+It's just some amount of data.
+TCP will add those headers that we talked about.
+UDP will add its own headers that we're going to talk about in just a second.
+Now the network layer will also add its own headers.
+And those headers are the source IP address, the destination IP address.
+And maybe just a couple more, but pretty low.
+Nothing really as crazy as TCP.
+And then the data link layer will add its own headers.
+The source Mac address and stuff like that.
+So a you can see we get some amount of information from this layer.
+And then we keep adding some data to it.
+And then we send that whole frame thing over the network.
+
+All right.
+
+So now let's talk about UDP headers or UDP segments as a whole.
+Now a UDP header has a source port just like before.
+It also has a destination port.
+And it has a segment length which indicates how big the segments itself is.
+So along with all these headers and the data, that is going to be the segment length and the size is
+16 bits.
+Now this segment length does not include other kinds of headers like source IP address and destination
+IP address.
+It's just the segments, as we said before, segments when we're talking about moving data in the fourth
+layer and the transport layer.
+The data is called segments.
+And in a segment there is nothing called an IP address or a Mac address.
+And we also have our data and something called checksum.
+Now checksum is just something to indicate whether or not the data is corrupted.
+So check some kind of checks, all the binary data, all those zeros and ones.
+And it does some kind of simple calculations.
+For example, it adds all of them together and it will come up with a number and it will send that number
+in the checksum header which is again 16 bits.
+
+And the receiver will receive the data.
+
+It will do its own calculations on the zeros and ones, and it will end up with a number.
+And it will check that number with this checksum number.
+And if they do match up, it means that the data was not corrupted.
+So this is just a little header here to make sure that the data is actually not corrupted.
+And we also have this header in TCP.
+I didn't show it in TCP.
+I kind of included that in the other section.
+But we also do have this checksum header in TCP and also the length.
+So in that other section here in this other we have something called checksum.
+And we also have something called length and some flags and window size and so on and so forth.
+But not that many.
+
+Not as crazy as you might expect.
+
+The size is as big as this size, so it's just a couple of bytes.
+And there are also some optional things, but this could vary.
+So I can't really say how many bits is this other.
+It could be really anything, but again, not that crazy.
+For example, it couldn't be maybe a couple of gigabytes or a couple of megabytes, just a few bytes.
+And that's pretty much it.
+But UDP the size of a UDP header is fixed at 64 bits or eight bytes.
+
+So a UDP header is always eight bytes.
+And then you have your data in place.
+
+All right.
+
+So this is pretty much it about the fourth layer.
+
+Now there is one more important thing that we have to talk about in this fourth layer.
+And that is the port numbers.
+Port numbers are the thing that connect the port layer to the application layer.
+And we're going to talk all about it in the next video.
+
+
+
+
