@@ -1,0 +1,303 @@
+
+So let's take a look at one networking scenario right now pretty quick.
+So let's say that I have my laptop right here, my MacBook.
+And I also have a router.
+So I bought a router and I installed it.
+And now this router could be connected to the internet or it could not be connected to the internet.
+It doesn't matter.
+The point is that I have now my laptop and also the router.
+As I said before, when you buy one of these routers, that router comes with a switch.
+And also in a lot of cases also with a wireless card.
+So you don't really have to worry about setting up switches.
+If you want to use this router in an Amazon data center, it's not really going to be practical.
+They have to buy their own switches and routers and configure them specifically for their own company,for their own infrastructure.
+But in this case, because you just have some personal use.
+So you have a laptop, you have an iPad, you might have maybe ten more devices or 50 more devices,
+but it doesn't matter.
+That router is capable of handling all of these things.
+So you don't have to worry about switches, routers and whatnot and connecting it to the whole internet.
+That part is done using your ISP.
+All right.
+So you have your MacBook, you have your router, and you will connect your MacBook to your router.
+Okay.
+So you may be using wireless or using LAN.
+It doesn't matter.
+They will both work in the very similar way.
+So if you're connected either using LAN or wireless, you still could just talk together, you know,
+specify IP addresses and receive bits and zeros just like before.
+Nothing is different.
+The only thing that's difference is how the zeros and ones are now traveling.
+So instead of traveling through a cable, those zeros and ones are now traveling through the air using
+waves.
+Maybe instead of using electricity or using light, zeros and ones are now traveling through the air.
+So same concept.
+Don't worry about it.
+It's just about how the zeros and ones are traveling across.
+
+
+
+All right, so with your MacBook in place and your router in place, these are now connected together.
+And let's say that you also connect your iPad to this router.
+So right now you have two devices that are connected to this router.
+Now a router has an IP address for itself which is again configured by default.
+That person, that company, whoever that designed and built this router configured this router to maybe
+have this very specific IP address.
+So a router also knows automatically again, by all those configurations, which are the jobs of a networking
+engineer and not a software engineer, is configured to automatically assign a new IP address to any
+device that connects to it.
+So if I connect my iPad to this router just connect to Wi-Fi.
+As soon as I connect I'm going to have an IP address.
+And this IP address is assigned to me by that router.
+Now there are again some conventions for these IP addresses, which we're going to talk about some of
+them later.
+But also we have some specific IP addresses.
+
+For example this IP address right here 127 .0.0.1.
+Now this is called a loopback address.
+So if my MacBook right now specifies this IP address that traffic that it's sending through that IP
+address will get looped back to itself just like this.
+And it's a convention.
+This very IP address, 127 .0.0.1 is associated with loopback.
+So all the routers, all these switches, all the devices know by convention that this is loopback.
+So when you send an information through this IP address your router is not going to get that traffic.
+And then scratch that around and wonder how who in the world has this IP address.
+So how can I now route this.
+No that's not going to happen.
+The information will not even get across to the router.
+And if it does, in some cases the router will loop it back to that very device.
+So this IP address that I have is again called a loopback address.
+And also we also call it a local host.
+So when you have maybe set up a small web server, maybe using NodeJS, Python, Java, what you've
+done was that you would run your application and then you would go to browser and then specify a local
+host colon and then your port number.
+That local host just means this IP address.
+So if instead of localhost you put down this IP address it's going to work just like before.
+A localhost is kind of like an alias for this IP address, kind of like a DNS.
+So when you specify Apple.com you are actually specifying an IP address behind the scene.
+And we're going to talk about DNS in just a minute.
+But this is for example one example of one of these specific IP addresses.
+Now you might be wondering because these two devices are now connected to this router, my iPad.
+Well, technically it could just specify the IP address of this computer and well, it could talk to
+it.
+Is that right.
+And the answer is yes.
+If and there's a huge if this computer is opening a port and sending some information across that port.
+So if my MacBook maybe opens up a port, maybe port 49, and it specifically says that whoever sends
+a request to my machine, so whoever specifies my IP address and also my port, I'm going to send them
+maybe a specific image, or I'm going to give them access to my whole computer, or I'm going to maybe
+send an Http response back to them.
+So this device should specify exactly what should happen if somebody sends a request to itself on a
+specific port.
+So if my iPad now specifies this IP address and also this port, it's going to receive maybe an image
+if it specifies another port, if my MacBook is also configured to send some information on that port,
+well, the iPad is going to receive it.
+If not, well, nothing will happen if my MacBook is not accepting any connections whatsoever.
+So it's not sending any requests through any ports.
+My iPad will not do anything if.
+Puts down the IP address of this computer.
+Nothing and absolutely nothing will happen.
+Right.
+So this is how this works.
+For example, a server, the reason that we call them a server is because they are configured in an
+exact way to say, all right, whoever sends a request to my IP address and to this port, I'm going
+to send them this set of information.
+Right.
+That is why we call them a server.
+It's not a special machine.
+Right now.
+You could make your laptop into a server.
+And it doesn't have to be, you know, it doesn't have to have some hardware, special hardware to be
+a server.
+You could just right now become a server, you could make your laptop a server, and then you could
+maybe buy a domain name and install it on your server will not install it actually using DNS, DNS servers
+and all that stuff that we're going to talk about in just a minute.
+But you could make any machine into a server as long as it is specifically specified what to do when
+a connection comes to my IP address, when a computer who is connected to the network specifies my IP
+address and a specific port, what I'm going to do in that case, if nothing is happening, well then
+we don't call that device a server.
+
+
+
+
+
+All right.
+So let's see this in action.
+Let's see.
+Right now I have my MacBook and also my iPad.
+And they are now connected to a router.
+Let's see what will happen if my iPad tries to specify the IP address of this machine.
+Well, as we said before, if two computers are on the same network or they are maybe on the public
+network, so they are in the internet and one of them specifies the IP address of the other machine.
+Well, if the other machine is not sending any information whatsoever on a specific port, well then
+nothing will happen.
+So if this is my MacBook right now, if my iPad just specifies its IP address, even though they are
+now connected to the same router, well, absolutely nothing will happen.
+But let's try to change it.
+Well, I've gone ahead and set up a very simple Http server.
+Feel free to do the same thing if you want, or just watch me do it.
+But if you can do it, I highly encourage you to do so.
+So just copy paste this code.
+I know it's not really going to make any sense to you.
+I mean, we haven't really talked about Http.
+We haven't talked about, you know, these headers, the status code.
+But basically it means that we're sending some application Json format.
+So we're sending this object which is message equals either back to the client, back to whoever sends
+an Http request to this port on my IP address.
+Now notice something right here.
+When I'm listening my servers, I'm kind of like firing up my server.
+I specified the port and also as the second argument, I specified the host.
+In other words, this second argument indicates on which interface on my machine I want to run my applicationon.
+So this IP address should look familiar to you.
+We just talked about it.
+This is the loopback address or localhost.
+So if I just omit it.
+So if I don't specify anything for the second argument it's going to be defaulted to that loopback address.
+So I'm going to just run this application.
+So I've created a folder on my desktop called demo.
+And I've created this file called app.js.
+And inside of this file I've wrote this code.
+You can just copy paste this code.
+We also ran this in the setup video.
+So if you have access to that code just copy paste it and run it.
+So if I run the application so node app.js says that server running on port 4080.
+Now this means that my machine right now is sending some amount of information on this port on localhost
+or on its loopback IP address.
+So I could just open up my browser and I could go to local host 4080 and I'll get that message.
+'Hi there'.
+And I'm sure you have done this many, many times.
+If you have used NodeJS or any other backend technologies, you just open up a port and you go to localhost
+that.
+But also I could specify that IP address.
+So I could say that 127.0.0.1 and I'm going to get back the exact same message.
+So we could also here instead of after the port, I could specify maybe host name.
+And my host name is going to be 127 001.
+And I could just pass this here like this.
+And I could say server running.
+So server running at this and then this.
+And because it's an Http application worry too much about it.
+We're going to talk about Http in just a second.
+I'm also going to specify a URL.
+We don't need a URL for networks to work.
+So if one computer wants to talk to another computer they don't need to specify a URL.
+They just have to specify the IP address and also the port.
+And that's it.
+But in this case because it's Http which is very high level, we're also going to specify a port because
+our browser will now identify this.
+You know a bit better.
+Anyway we're going to talk about this in just a minute.
+But the point is that this is my IP address and this is my port.
+So let's run this one more time.
+So server running at this, some could just copy this and I can just refresh and I'm going to get the
+exact same result.
+Or if I just put that again I'm going to get that same message message.
+'Hi there.'
+So as we talked before computers only understand IP addresses.
+They don't understand anything else.
+So if we want to make one computer to talk to another one you have to specify an IP address.
+All right.
+So what I'm going to do right now is that I'm going to open up my iPad and try to connect to my machine
+and let's see what's going to happen.
+All right.
+All right, so on my MacBook I have connected to my iPhone.
+So I have made my iPhone into a router and also a switch by turning on personal hotspots.
+So when you turn on the personal hotspot on your mobile, your mobile will turn into a switch and also
+a router.
+So you could now connect to it.
+You could make use of the Wi-Fi and all of that kind of good stuff.
+So now my iPhone is acting like a router, which is just the same.
+If I were to install a router right here and connect it to my wall and then connect to that Wi-Fi.
+So my iPhone is acting just like that.
+So my MacBook is now connected to my iPhone, which is my router in this case.
+And also on my iPad right here.
+If I go to settings and I go into Wi-Fi, you could also see that I am now connected to Joseph's iPhone,
+which is the exact same router that I'm connected to on my MacBook.
+So now we have that exact diagram that we talked about.
+We have a router which is my iPhone, and also we are connected to it both using my iPad and using my
+MacBook.
+So basically these two devices are now connected to a same router.
+So as we talked before when we have a case like this.
+So my iPad right here should be able to just specify the IP address of my MacBook and maybe that port
+and maybe get that message.
+'Hi there'.
+Do you think that's going to work.
+So let's give it a shot.
+So I'm going to open up Safari.
+And right here I'm going to put down that IP address of my MacBook.
+
+But the point is this is one of my interfaces, which is my loopback interface.
+So your machine could have many, many interfaces.
+And one of them could be maybe Ethernet cable, one of them could be Wi-Fi, one of them could be loopback
+like this.
+And you could run your Node.js application on some of these interfaces, or maybe on all of them.
+Not quite sure.
+It really depends on what that interface is accepting, which are the things that we're not really going
+to get into.
+But in this case, what we're looking for is, to be honest, I have no idea what some of these interfaces
+are, so I'm not really going to talk about them.
+I mean, I have some ideas, but not enough to explain what they do.
+But what we're looking for is our Wi-Fi interface, because that is how I am connected to my router.
+And that is also the same network that my iPad is connected to.
+So I need to find that IP address, which should be the name is usually n0 in my case.
+Yep.
+It's right here.
+And you can see that my version four IP address is this one, which is the exact same thing that we
+saw right here.
+So if I option click on my Wi-Fi, you can see that my IP address is one 72.20 .1.2 which is also specified
+right here.
+So go ahead.
+Do this.
+If you're on windows, maybe you could go to your networks and then see the IP address.
+Just Google how to find my IP address on my machine.
+Now don't try to find your public IP address.
+That's different.
+And we're going to talk about it in just a second.
+What I'm talking about is the IP address of your machine in that private network that you're in right
+now, which is this one in my case.
+All right.
+So this is my IP address.
+So let's see what will happen if I specify this.
+All right.
+So I am on my iPad again.
+And I'm going to just specify that IP address 172 dot 20 .1.2.
+
+
+
+The reason is it's not going to work because I am running my node application on the loopback interface
+on this IP address, which means that only people who send a request from my own machine could get access
+to this file.
+So if someone from the outside internet tries to access this IP address and this port, they're not
+going to be able to do it.
+This is my loopback address, and my node is running on this interface.
+So nobody else could access this application.
+Now technically this is my machine.
+And if I run another application on it that is accepting traffic from another interface, and that application
+gets those traffics and redirects those traffics to my node application because it's on the same machine.
+So it could also access my localhost and then also get the response from my node machine and then send
+those data back through that interface.
+Well then yeah, I have some ways to connect to the outside internet.
+If you have heard about nginx, which is a pretty popular application, when you try to deploy your
+application online, your node application online, you most probably have used this nginx, which you
+could also use as a reverse proxy, which is the exact same thing that we talked about.
+It will accept traffic through a public interface to an interface that's on the network, and it could
+redirect those traffic to your any port number that you specify.
+And it doesn't matter if it's on localhost.
+But in this case we're going to talk about nginx.
+When we're talking about deploying Node.js application.
+We're not going to talk about it right now.
+What we can do also in Node.js is to specify another interface.
+All right.
+So this is my very first interface that I use my localhost.
+And notice if I change it to zero it's not going to work.
+All right.
+So if I run the node app again so node app.js it's going to say that address not available at this IP
+address because well yes that's true.
+It's not available.
+He loopback IP address is 127.0.0.1, and that is only yet that is the IP version four version of it.
+And it's not zero zero.
+It's not anything else.
+It has to be this one, otherwise it will not work.
+IP addresses have to be super accurate.
+If you just mess up just one digit just by one bit, that's a totally different IP address.
+
+
+
