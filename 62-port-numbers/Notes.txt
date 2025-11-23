@@ -1,0 +1,71 @@
+In the previous video, we talked about TCP, UDP and concepts behind the fourth layer.
+And in this video, we're going to focus on a very crucial concept in the fourth layer which is the
+port numbers.
+Now in the fourth layer transport layer we said port numbers are connecting this layer to the application
+layer.
+So port numbers are very important in this layer.
+So you have to specify a port.
+Now you might be saying all right what kind of port can I specify.
+And what are the ranges and what are the limitations.
+And the answer is if you want to find that answer just search for any port numbers.
+
+
+So here you could see the well known ports.
+I'm assuming that you might know the SSH port, which is port 22 right here for SSH and some other
+well known ports like 80 which is for Http.
+But if you scroll all the way up you could see that port ranges.
+
+Right here are these.
+Now the port range really depends on your operating system.
+But in general, ports starting from zero all the way up to 1023 are for system ports.
+If you want to open a port that is in this range on your operating system, you have to run that application
+as sudo as root and use ports in this range.
+And we also have some dynamic or private ports in this range.
+So I could say the range is from zero all the way up to this number 65,535.
+So as long as your application is in this range, you are pretty safe.
+But also try to stay away from system ports.
+So when you are creating a node application, just try to go higher than 1023.
+I mean, you technically could assign something in this range, but that is not really advisable.
+
+
+Now, something that you notice here is that we have some duplicate ports, and you might be wondering,
+what the heck is that?
+For example, for port number two, why do we have two?
+Well, the answer is one of them is for TCP and another one is for UDP.
+So technically you can create two applications  on a single port.
+So you can have a node application that is running on TCP on port 8000.
+And you could also have another application on port 8000 which is a UDP application.
+But you cannot have the same thing twice.
+For example, if you run your application a TCP application on port 8000, you cannot create an open
+another node application on the same port if that TCP.
+So that's also something to keep in mind.
+
+
+So as long as you know the applications port is higher than this port 1023, you should be good to go.
+And if there is another application that's using the same port, you will receive an error.
+That port number is already in use.
+
+
+For example, port 22 is for your SSH port.
+This is a port that is used to make you connect to your server.
+So if you are so if you buy a server or you rent one so you get something from AWS or Digital Ocean
+and you try to connect to it, you will use SSH.
+And if you occupy that port, maybe using your node application, you're going to run into some issues.
+
+
+
+
+But what I really mean by system ports, for example port 80 is for the Http port.
+So if I just run my node application on that port, now if I don't specify anything as a port, it's
+going to be default to port 80.
+So right now I could just say localhost and get my message.
+Or I could just specify that IP address 0.0.1.
+And without needing to specify any port whatsoever, I'm going to be able to access my application.
+Because right now it's running on port 80, and port 80 is the default port for the Http.
+So if you are in this range of 0 to 60, maybe what was number 65,000?
+
+
+
+The next section is all about Http, about Http version one and two are built on top of TCP, and version
+three is built on top of UDP.
+
