@@ -1,0 +1,237 @@
+Server is going to be our chat server.
+And the client is going to be anyone who could connect to the server.
+So we're going to set up some kind of protocol for ourself and say that whoever sends us a specific
+message, we're going to be able to extract the message and log it onto the screen so that everybody
+else is connected to our server is going to be able to see that message.
+Now, this client, we could set up millions of these instances and they could all connect to the server.
+So we're going to implement one client.
+But we could have millions of other clients.
+We could run this client application many many times and they could all connect to the server.
+So let's first start with the server.
+And then we're going to move on to the client.
+I'm also going to open up the documentation for the.
+Net module because we're going to use it a lot.
+So I'm just going to go into the NodeJS website.
+I'm going to go into the docs and I'm just going to click on the LTS version.
+And right here I'm going to scroll down and find the Net module.
+And I'm just going to click on it.
+Now there's something I just want to say about this documentation.
+If you start reading this documentation, it says that the node.
+Net module provides an asynchronous network API for creating stream based TCP or IPC servers and clients.
+Now there's something I just want to point out right now that this IPC could be really confusing because
+IPC could also stand for Internet Protocol communication.
+Well, it doesn't stand for that in this case, but it could be really confusing because this.
+Net module is usually for these networking stuff.
+And you might see this and you might scratch your head around and wonder what in the world is IPC.
+So we already know what is TCP and what is a TCP server and what is a TCP client.
+Just two different endpoints who could talk together.
+But what is this IPC here?
+Now I just want to say that this IPC here has nothing to do with the networking.
+And by networking I mean all those stuff that we talked about, all those layers, IP addresses, port
+numbers and whatnot.
+This is a totally different thing.
+This IPC here stands for Inter-process Communication, and it is something that's done in your operating
+system and in your operating system, only to make a way for different processes to talk together and
+to communicate with each other.
+Now, the reason that they're both in the same module and node, well, actually kind of makes sense
+because well, this net module is all about communication.
+It could be communicating from this endpoint to another endpoint which could be a TCP connection, or
+it could talk to another process.
+Now this IPC is a very important concept.
+We're not really going to learn about it in this video.
+We're going to learn about it in another video where we talk about child processes and stuff like that.
+The reason that it's so important is because you need to have a way of your node process to talk to
+other processes.
+So if I open up my activity monitor, you could see that I have around 400 processes running on my machine
+right now.
+It got reduced down to 380.
+But there are a lot of processes and my node process, if I just run node app.js, it's going to be
+only one process.
+And if I start a database application, it's going to be another process.
+Now it's very important for these processes, for some of them actually to talk together.
+And that's what they're doing.
+In fact, if I just search for Google I could see that I have lots of Google processes opened up on
+my machine.
+One of them is Google Chrome one, another one is the renderers.
+And these do have a way of communication between together.
+So there are some ways in your operating system to make use of, to make one process to talk to another
+process.
+And we're going to talk about all of that stuff later on in the course and not right now.
+But it's very important because imagine you have your node application and you might want to have a
+database.
+Now you need to have a way to make these two processes communicate together.
+So they could send an exchange information, or there could be a video editing application.
+So you are maybe using Node.js to grab a file from client from a user, and then you want to do some
+editing on it.
+And for that you might want to use another process.
+So there needs to be a way for these two processes to talk together.
+And one way that you can do it in node is using IPC.
+And it's pretty good actually that you could just learn this.
+Net module using TCP.
+And you're just learning one thing but you're also learning.
+Another thing, a completely different thing.
+You're learning how to create TCP connections, but you're also learning how to create IPC servers.
+So how to do interprocess communications using the exact same module, the exact same function.
+The only thing that's different is when you're creating the server, when you want to create an IPC
+connection or IPC server, instead of specifying an IP address and a port, you just specify a file.
+So you just specify a path and two processes that are supposed to communicate together.
+They're going to use that file to exchange information together.
+And it's an operating system concept and really has nothing to do with NodeJS.
+It's not an invention of node.
+So you could now make NodeJS to talk to another or maybe C plus plus application Java application Python
+application just by specifying a path and talking together.
+So again we're going to talk about them later on.
+But notice that we are right now just focusing on the networking stuff and the TCP.
+But also you're learning something else on the side as a bonus maybe.
+Anyway, so that's just something that I just wanted to say because this IPC, we're going to see it
+a lot in the documentation.
+And again, it has nothing to do with all those networking stuff that we talked about.
+There is no IP addresses here.
+There is no ports.
+It's just a way for two processes to talk together.
+In fact, if one process is in one machine and another one is in another machine, they can't really
+talk together.
+For that matter, you have to use TCP.
+
+
+Now in the Net module there are two main important functions that we need to talk about.
+net.createServer()
+net.createConnection()
+
+So let's talk about what these two do.
+Now the first one, Createserver, as the name suggests, uses to create a server.
+So a server is just an endpoint that serves something.
+And a client is someone who's making use of those services.
+So your server it could be a game server a chat server a web server.
+It could be anything.
+But it serves data.
+It does something.
+It serves something to the client.
+So we could have hundreds and millions of clients who will talk to one single server, and they could
+all make use of all these services, or only maybe one service that this server serves.
+So using this method, you could create one of these servers.
+And using.
+net.createConnection() you could create a client.
+And this client should be connected to a server.
+If there's no server then there is no client.
+And that's how it works in TCP.
+So you first have to create your server.
+And you have to specify an IP address, port.
+And then in your create connection you will specify that IP address and that port.
+And now this client talks to that server.
+And they could now exchange information.
+
+
+
+Net server can be a TCP or an IPC server depending on what it listens to.
+So if you specify an IP address and a port, it's going to be a TCP server.
+And if you just specify a path it's going to be an IPC server.
+If you just specify port and then maybe host, this is a TCP server.
+And if you just specify a path this is going to be an IPC server.
+
+
+
+server.address()
+
+returns the address, the family and the port of that server that is listening.
+it returns all the stuff if it's listening on an IP socket, but if it's listening
+on Unix domain socket, the name is returned as a string.
+So IP socket here just means that TCP stuff.
+So if it's a TCP connection it's going to return this port, this family type and the address.
+But if it is an inter-process communication server it's going to return just the name as a string.
+So again listening on a pipe or Unix domain sockets, these are the terms used for IPC or inter-process
+communication, which is something that we're going to talk about later in the course and not right
+now.
+So we don't care about these two things, but I just want you to have some idea about it.
+So that piping is just a way for two processes to talk together.
+Unix domain socket is just another way of two processes to talk together, but they work in a slightly
+different way.
+But the concept is the same two processes on the same operating system talking together.
+And this one is an IP socket, which is a TCP application.
+
+
+
+
+server.on("connection", (socket) => {
+  console.log("A new connection to the server!");
+});
+
+when hover over socket it show net.Socket 
+
+And this callback function accepts one parameter which is a socket.
+And this is the next thing that we need to talk about.
+Now, if I can hover over the socket, you could see that this one is another class net.Socket .
+Now this is also another very important thing to understand about the Net module.
+
+So three very important stuff to understand about the.
+
+Net module 
+one is net.createServer() which returns a net.Server().
+And another one is net.createConnection().
+
+Let me just save this here.
+So const client equals net dot create connection.
+And this client if I just hover over it you could see that it's a class of type net dot socket which
+is the exact same type that this socket is right here.
+So what does socket mean basically.
+
+Socket just means your end point.
+So now you could read information from the socket.
+And you could also now send information to the socket.
+
+So if I just say socket.write like this.
+And this socket is actually a stream.
+Same for this one.
+Their types are identical.
+So whatever we can do here we can also do it right here with this client.
+
+const client = net.createConnection({ host: "127.0.0.1", port: 3008 }, () => {
+  console.log("Connected to the server!");
+});
+
+server.on("connection", (socket) => {
+  console.log("A new connection to the server!");
+});
+
+when hovering above client -----> net.Socket
+when hovering above socket it also --->net.Socket
+
+
+
+So whatever I write to the socket because it's my end point.
+Remember we said that in TCP we have two end points right.
+So end points maybe a and maybe end points maybe b.
+And this B could send information to this a.
+And also this A could send information to this B.
+They are duplex.
+So they could both read from something and they could also write to something.
+So these two end points could now talk together.
+
+And in the NodeJS net module we call these endpoints socket.
+Actually this is a computer science topic.
+So when you have two end points two networking endpoints that are talking together we called them sockets.
+So that's why we have that name.
+So now I could both write and make use of that on data event to figure out what kind of data I'm receiving
+on this endpoint.
+For now though, instead of just writing or reading, I'm just going to log something and say a new
+connection to the server.
+
+
+
+When you hover over server and it shows net.Server, that is simply 
+the TypeScript/VS Code type information telling you what kind of object server is.
+
+Let’s break it down clearly:
+
+✅ What is net.Server?
+
+net.Server is a class in Node.js from the built-in net module.
+
+It represents a TCP server.
+
+When you write:
+
+const server = net.createServer();
+
+
+You're creating an instance of the net.Server class.
